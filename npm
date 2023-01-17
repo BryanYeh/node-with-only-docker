@@ -1,0 +1,8 @@
+#!/bin/bash
+
+path=$(printf '%s\n' "${PWD##*/}")
+
+# web is the service name in docker-compose.yml
+command="docker exec $(docker ps -q -f name=web) npm "$@""
+echo "Running npm on docker web: 'npm "$@"'"
+$command
